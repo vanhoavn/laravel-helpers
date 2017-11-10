@@ -1,0 +1,28 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyBaseModel;
+
+class DummyClass extends DummyBaseModelClass
+{
+    //region database consts
+    /***
+     * Database table name of this model
+     **/
+    const TABLE = '';
+
+    /***
+     * Database table columns of this model, prefix with COL_
+     **/
+    //endregion
+
+    //region model definitions
+    protected $table = self::TABLE;
+    //
+    //endregion
+
+    //region model functions
+    //endregion
+}
+

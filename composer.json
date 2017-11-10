@@ -1,0 +1,35 @@
+{
+    "name": "vanhoavn/laravel-helper",
+    "description": "Helper commands for laravel projects.",
+    "license": "MIT",
+    "homepage": "https://vhn.vn/",
+    "support": {
+        "issues": "https://github.com/vanhoavn/laravel-helpers/issues",
+        "source": "https://github.com/vanhoavn/laravel-helpers"
+    },
+    "keywords": ["laravel", "helper"],
+    "authors": [{
+        "name": "vanhoa",
+        "email": "vanhoa@vhn.vn"
+    }],
+    "require": {
+        "php": "^7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vhnvn\\LaravelHelper\\": ""
+        }
+    },
+    "suggest": {},
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vhnvn\\LaravelHelper\\ModulesServiceProvider"
+            ]
+        }
+    }
+}
