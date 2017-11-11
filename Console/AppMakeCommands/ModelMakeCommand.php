@@ -98,7 +98,7 @@ class ModelMakeCommand extends GeneratorCommand
     $modelBaseClass = str_replace($this->getNamespace($modelBase).'\\', '', $modelBase);
 
     $stub = str_replace(
-      ['DummyBaseModel', 'DummyBaseModelClass'],
+      ['DummyBaseModelFull', 'DummyBaseModelClass'],
       [$modelBase, $modelBaseClass],
       $stub
     );

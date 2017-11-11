@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyBaseModel;
+use DummyBaseModelFull;
 
 class DummyClass extends DummyBaseModelClass
 {
