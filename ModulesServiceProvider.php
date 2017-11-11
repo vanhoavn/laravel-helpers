@@ -4,6 +4,7 @@ namespace Vhnvn\LaravelHelper;
 
 use Illuminate\Support\ServiceProvider;
 
+
 class ModulesServiceProvider extends ServiceProvider {
   /**
    * Bootstrap the application events.
