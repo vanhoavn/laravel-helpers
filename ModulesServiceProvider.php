@@ -38,6 +38,8 @@ class ModulesServiceProvider extends ServiceProvider {
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleProviderMakeCommand::class,
 
       \Vhnvn\LaravelHelper\Console\AppMakeCommands\ModelMakeCommand::class,
+
+      \Vhnvn\LaravelHelper\Console\DataModelCommands\DataModelCodeGenerator::class,
     ]);
   }
 }
