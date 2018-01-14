@@ -69,7 +69,8 @@ class ModuleNewCommand extends Command {
 
     $this->info("  .. create module provider");
     $this->call('mmake:provider', [
-      'name' => "{$module}/{$name}ModuleProvider",
+      'module' => $module,
+      'name' => "{$name}ModuleProvider",
     ]);
   }
 
