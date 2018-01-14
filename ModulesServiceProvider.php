@@ -37,10 +37,13 @@ class ModulesServiceProvider extends ServiceProvider {
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleListenerMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleModelMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleProviderMakeCommand::class,
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleMigrateMakeCommand::class,
 
       \Vhnvn\LaravelHelper\Console\AppMakeCommands\ModelMakeCommand::class,
 
       \Vhnvn\LaravelHelper\Console\DataModelCommands\DataModelCodeGenerator::class,
+
+      \Vhnvn\LaravelHelper\Console\ModuleCommands\ModuleMigrateCommand::class,
     ]);
   }
 }

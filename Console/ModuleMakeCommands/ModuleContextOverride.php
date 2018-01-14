@@ -25,6 +25,6 @@ trait ModuleContextOverride {
   {
     $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-    return base_path(config('modules.path').'/'.str_replace('\\', '/', $name).'.php');
+    return $this->laravel->basePath() . config('modules.path').'/'.str_replace('\\', '/', $name) . '.php';
   }
 }
