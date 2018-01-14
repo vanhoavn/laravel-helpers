@@ -47,18 +47,26 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
     $ret = parent::replaceClass($stub, $name);
 
     $code = [];
+    $imports = [];
 
     if ($this->input->hasOption('registerLogic')) {
       $logic = $this->input->getOption('registerLogic');
       $logic = str_replace("/", "", $logic);
       $logic = str_replace("\\", "", $logic);
 
-      $code[] = '$this->app->singleton('.$this->rootModuleNamespace().'\\Logic\\'.$logic.'::class);';
+      $imports[] = 'use '.$this->rootModuleNamespace().'\\Logic\\'.$logic;
+      $code[] = '$this->app->singleton('.$logic.'::class);';
     }
 
+    $replaces = [
+      'DummyCode' => implode("\n        ", $code),
+      'DummyImportNamespace' => implode("\n", $imports),
+      'dummyname' => Str::snake($name),
+    ];
+
     return str_replace(
-      ['DummyCode', 'dummyname' ],
-      [implode("\n        ", $code), Str::snake($name), ],
+      array_keys($replaces),
+      array_values($replaces),
       $ret
     );
   }
