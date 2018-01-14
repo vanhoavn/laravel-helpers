@@ -71,6 +71,7 @@ class ModuleNewCommand extends Command {
     $this->call('mmake:provider', [
       'module' => $module,
       'name' => "{$name}ModuleProvider",
+      '--registerLogic' => "{$name}Logic",
     ]);
   }
 

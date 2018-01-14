@@ -13,8 +13,9 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
    * @var string
    */
   protected $signature = 'mmake:provider
-    {module : The module to create the provider.}
-    {name   : The provider name.}
+    {module           : The module to create the provider.}
+    {name             : The provider name.}
+    {--registerLogic= : Logic class to register singeton.}
   ';
 
   /**
@@ -45,13 +46,19 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
   {
     $ret = parent::replaceClass($stub, $name);
 
-    $name = $this->input->getArgument('name');
-    $name = str_replace("/", "", $name);
-    $name = str_replace("\\", "", $name);
+    $code = [];
+
+    if ($this->input->hasOption('registerLogic')) {
+      $logic = $this->input->getOption('registerLogic');
+      $logic = str_replace("/", "", $logic);
+      $logic = str_replace("\\", "", $logic);
+
+      $code[] = '$this->app->singleton('.$this->rootModuleNamespace().'\\Logic\\'.$logic.'::class);';
+    }
 
     return str_replace(
-      ['DummyModuleLogic', 'dummyname' ],
-      ["{$name}Logic", Str::snake($name), ],
+      ['DummyCode', 'dummyname' ],
+      [implode("\n        ", $code), Str::snake($name), ],
       $ret
     );
   }

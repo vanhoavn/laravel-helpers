@@ -3,7 +3,6 @@
 namespace DummyNamespace;
 
 use Illuminate\Support\ServiceProvider;
-use DummyNamespace\Logic\DummyModuleLogic;
 
 class DummyClass extends ServiceProvider
 {
@@ -27,7 +26,7 @@ class DummyClass extends ServiceProvider
         // $configPath = __DIR__ . '/config/dummyname.php';
         // $this->mergeConfigFrom($configPath, 'dummyname');
 
-        $this->app->singleton(DummyModuleLogic::class);
+        DummyCode
 
         // $this->commands([
         // ]);
