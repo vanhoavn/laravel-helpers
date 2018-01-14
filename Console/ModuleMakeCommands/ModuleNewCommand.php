@@ -11,7 +11,7 @@ class ModuleNewCommand extends Command {
    *
    * @var string
    */
-  protected $signature = 'mmake:module
+  protected $signature = 'mmake
     {module : The module to create/update.}
   ';
 
@@ -60,7 +60,7 @@ class ModuleNewCommand extends Command {
     foreach(self::STRUCTURES as $structure) {
       $targetFunction = "create{$structure}Structure";
       $this->info(" .. create structure {$structure}");
-      if (method_exists([$this, $targetFunction])) {
+      if (method_exists($this, $targetFunction)) {
         $this->$targetFunction($base_path, $module, $name);
       } else {
         $this->createGenericStructure($base_path, $structure, $module,$name);
