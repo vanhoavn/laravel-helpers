@@ -12,7 +12,11 @@ trait ModuleContextOverride {
    */
   protected function rootNamespace()
   {
-    return config('modules.namespace', $this->laravel->getNamespace());
+    if ($this->input->hasArgument('module')) {
+      return $this->rootModuleNamespace();
+    } else {
+      return config('modules.namespace', $this->laravel->getNamespace());
+    }
   }
 
   /**
@@ -24,7 +28,7 @@ trait ModuleContextOverride {
   {
     $module_ns = str_replace('/', '\\', $this->input->getArgument('module'));
 
-    return $this->rootNamespace() . '\\' . $module_ns;
+    return config('modules.namespace', $this->laravel->getNamespace()) . '\\' . $module_ns;
   }
 
   /**

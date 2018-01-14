@@ -83,7 +83,7 @@ class ModuleNewCommand extends Command {
     $this->createGenericStructure($base_path, 'Logic', $module, $name);
     $this->call('mmake:logic', [
       'module' => $module,
-      'name' => $name,
+      'name' => "{$name}Logic",
     ]);
     $this->call('mmake:facade', [
       'module' => $module,

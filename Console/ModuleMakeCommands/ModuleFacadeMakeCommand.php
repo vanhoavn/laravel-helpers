@@ -75,12 +75,6 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
   {
     parent::replaceNamespace($stub, $name);
 
-    $stub = str_replace(
-      ['DummyModuleNamespace'],
-      [$this->rootModuleNamespace()],
-      $stub
-    );
-
     return $this;
   }
 
@@ -97,11 +91,12 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
 
     $target = $this->input->getArgument('target');
     $target_full = str_replace('/', '\\', $target);
-    $target_base = trim(strrchr($target_full, '/') ?? $target_full, '/');
+    $target_base = trim(strrchr($target_full, '\\') ?: $target_full, '\\');
 
     return str_replace(
       ['DummyTargetFull', 'DummyTargetBase', ],
       [$target_full, $target_base, ],
-    $ret);
+      $ret
+    );
   }
 }

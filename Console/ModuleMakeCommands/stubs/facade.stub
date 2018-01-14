@@ -3,7 +3,6 @@
 namespace DummyNamespace;
 
 use Illuminate\Support\Facades\Facade;
-use DummyModuleNamespace\Facade;
 use DummyModuleNamespace\DummyTargetFull;
 
 /**
