@@ -18,4 +18,15 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
    * @var string
    */
   protected $description = 'Create a new module\'s provider class';
+
+  /**
+   * Get the default namespace for the class.
+   *
+   * @param  string  $rootNamespace
+   * @return string
+   */
+  protected function getDefaultNamespace($rootNamespace)
+  {
+      return $rootNamespace;
+  }
 }

@@ -90,7 +90,7 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
     $ret = parent::replaceClass($stub, $name);
 
     $target = $this->input->getArgument('target');
-    $target_full = str_replace('/', '\\', $target);
+    $target_full = $this->rootModuleNamespace() . '\\' . str_replace('/', '\\', $target);
     $target_base = trim(strrchr($target_full, '\\') ?: $target_full, '\\');
 
     return str_replace(
