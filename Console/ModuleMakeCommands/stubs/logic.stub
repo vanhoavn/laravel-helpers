@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+/** @noinspection PhpHierarchyChecksInspection */
+
+/**
+ * Class DummyClass
+ * @package DummyNamespace
+ *
+ */
+class DummyClass
+{
+  //
+}

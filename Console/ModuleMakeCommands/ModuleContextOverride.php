@@ -16,6 +16,18 @@ trait ModuleContextOverride {
   }
 
   /**
+   * Get the module's root namespace for the class.
+   *
+   * @return string
+   */
+  protected function rootModuleNamespace()
+  {
+    $module_ns = str_replace('/', '\\', $this->input->getArgument('module'));
+
+    return $this->rootNamespace() . '\\' . $module_ns;
+  }
+
+  /**
    * Get the destination class path.
    *
    * @param  string  $name
