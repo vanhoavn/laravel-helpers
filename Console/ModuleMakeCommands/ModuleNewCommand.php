@@ -59,7 +59,7 @@ class ModuleNewCommand extends Command {
 
     foreach(self::STRUCTURES as $structure) {
       $targetFunction = "create{$structure}Structure";
-      $this->info(" .. create structure {$structure}");
+      $this->info("  .. create structure {$structure}");
       if (method_exists($this, $targetFunction)) {
         $this->$targetFunction($base_path, $module, $name);
       } else {
@@ -67,7 +67,7 @@ class ModuleNewCommand extends Command {
       }
     }
 
-    $this->info(" .. create module provider");
+    $this->info("  .. create module provider");
     $this->call('mmake:provider', [
       'name' => "{$module}/{$name}ModuleProvider",
     ]);
