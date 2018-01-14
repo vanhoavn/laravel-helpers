@@ -91,7 +91,7 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
    * @param  string  $name
    * @return string
    */
-  protected function replaceClass(&$stub, $name)
+  protected function replaceClass($stub, $name)
   {
     $ret = parent::replaceClass($stub, $name);
 
@@ -102,7 +102,7 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
     return str_replace(
       ['DummyTargetFull', 'DummyTargetBase', ],
       [$target_full, $target_base, ],
-    $stub);
+    $ret);
   }
 
     /**
