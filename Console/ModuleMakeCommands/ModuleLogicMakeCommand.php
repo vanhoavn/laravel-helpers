@@ -7,11 +7,14 @@ use Illuminate\Console\GeneratorCommand;
 class ModuleLogicMakeCommand extends GeneratorCommand {
   use ModuleContextOverride;
   /**
-   * The console command name.
+ 	 * The console command signature.
    *
    * @var string
    */
-  protected $name = 'mmake:logic';
+  protected $signature = 'mmake:logic
+    {module : The module to create the logic.}
+    {name   : The logic name.}
+  ';
 
   /**
    * The console command description.
@@ -56,16 +59,6 @@ class ModuleLogicMakeCommand extends GeneratorCommand {
    */
   protected function getDefaultNamespace($rootNamespace)
   {
-      return $rootNamespace.'\Logic';
-  }
-
-  /**
-   * Parse the class name and format according to the root namespace.
-   *
-   * @param  string  $name
-   * @return string
-   */
-  protected function qualifyClass($name){
-    return parent::qualifyClass("{$name}Logic");
+      return $rootNamespace;
   }
 }

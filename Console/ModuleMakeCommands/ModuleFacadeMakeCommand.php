@@ -104,14 +104,4 @@ class ModuleFacadeMakeCommand extends GeneratorCommand {
       [$target_full, $target_base, ],
     $ret);
   }
-
-    /**
-   * Parse the class name and format according to the root namespace.
-   *
-   * @param  string  $name
-   * @return string
-   */
-  protected function qualifyClass($name){
-    return parent::qualifyClass($name);
-  }
 }

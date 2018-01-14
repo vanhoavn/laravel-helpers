@@ -37,6 +37,11 @@ trait ModuleContextOverride {
   {
     $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-    return $this->laravel->basePath() . config('modules.path').'/'.str_replace('\\', '/', $name) . '.php';
+    if ($this->input->hasArgument('module')) {
+      $module_path = str_replace('\\', '/', $this->input->getArgument('module'));
+      return $this->laravel->basePath() . '/' . config('modules.path') . '/' . $module_path . '/' . str_replace('\\', '/', $name) . '.php';
+    } else {
+      return $this->laravel->basePath() . '/' . config('modules.path') . '/' . str_replace('\\', '/', $name) . '.php';
+    }
   }
 }
