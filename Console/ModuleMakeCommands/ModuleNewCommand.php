@@ -94,6 +94,12 @@ class ModuleNewCommand extends Command {
     ]);
   }
 
+  protected function createRepositoryStructure($base_path, $module, $name) {
+    $this->createGenericStructure($base_path, 'Repository', $module, $name);
+    $this->createGenericStructure($base_path, 'Repository/Contracts', $module, $name);
+    $this->createGenericStructure($base_path, 'Repository/Default', $module, $name);
+  }
+
   protected function mkdir($dir) {
     @\mkdir($dir, 0777, true);
     if(!file_exists($dir) || !is_dir($dir)) {

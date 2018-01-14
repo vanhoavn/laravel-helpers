@@ -31,5 +31,8 @@ class DummyClass extends ServiceProvider
 
         // $this->commands([
         // ]);
+
+        // BEGIN - REPOSITORIES REGISTRY
+        // END - REPOSITORIES REGISTRY
     }
 }
