@@ -61,7 +61,7 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
     $replaces = [
       'DummyCode' => implode("\n        ", $code),
       'DummyImportNamespace' => implode("\n", $imports),
-      'dummyname' => Str::snake($name),
+      'dummyname' => Str::snake(str_replace(['/','\\'],['',''],$this->input->getArgument('module'))),
     ];
 
     return str_replace(

@@ -37,7 +37,7 @@ class ModuleRepositoryMakeCommand extends Command
     protected $signature = 'mmake:repository
     {module           : The module to create the repository.}
     {name             : The repository name.}
-    {--register       : Register the repository within service provider.}
+    {--r|register     : Register the repository within service provider.}
   ';
 
     /**

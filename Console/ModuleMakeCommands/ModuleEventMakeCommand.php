@@ -6,11 +6,14 @@ class ModuleEventMakeCommand extends \Illuminate\Foundation\Console\EventMakeCom
 {
   use ModuleContextOverride;
   /**
-   * The console command name.
+	 * The console command signature.
    *
    * @var string
    */
-  protected $name = 'mmake:event';
+  protected $signature = 'mmake:event
+    {module           : The module to create the event.}
+    {name             : The event name.}
+  ';
 
   /**
    * The console command description.

@@ -6,11 +6,16 @@ class ModuleListenerMakeCommand extends \Illuminate\Foundation\Console\ListenerM
 {
   use ModuleContextOverride;
   /**
-   * The console command name.
+	 * The console command signature.
    *
    * @var string
    */
-  protected $name = 'mmake:listener';
+  protected $signature = 'mmake:listener
+    {module           : The module to create the listener.}
+    {name             : The listener name.}
+    {--e|event=       : The event class being listened for.}
+    {--queued         : Indicates the event listener should be queued.}
+  ';
 
   /**
    * The console command description.

@@ -33,6 +33,7 @@ class ModuleNewCommand extends Command {
     'Facades',
     'Logic',
     'Model',
+    'database',
     'Repository',
   ];
 
@@ -98,6 +99,11 @@ class ModuleNewCommand extends Command {
     $this->createGenericStructure($base_path, 'Repository', $module, $name);
     $this->createGenericStructure($base_path, 'Repository/Contracts', $module, $name);
     $this->createGenericStructure($base_path, 'Repository/DefaultImplement', $module, $name);
+  }
+
+  protected function createdatabaseStructure($base_path, $module, $name) {
+    $this->createGenericStructure($base_path, 'database', $module, $name);
+    $this->createGenericStructure($base_path, 'database/migrations', $module, $name);
   }
 
   protected function mkdir($dir) {
