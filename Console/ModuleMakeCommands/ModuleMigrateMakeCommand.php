@@ -26,13 +26,11 @@ class ModuleMigrateMakeCommand extends \Illuminate\Database\Console\Migrations\M
   */
   protected function getMigrationPath()
   {
-    $base_path = $this->getPath('databases/migrations');
-
     if (! is_null($targetPath = $this->input->getOption('path'))) {
-			return $this->laravel->basePath().'/'.$targetPath;
+			return $this->getPath($targetPath);
 		}
 
-		return parent::getMigrationPath();
+		return $this->getPath('databases/migrations');
 	}
 
   /**
