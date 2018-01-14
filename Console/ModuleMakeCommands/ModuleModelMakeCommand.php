@@ -3,6 +3,8 @@
 namespace Vhnvn\LaravelHelper\Console\ModuleMakeCommands;
 
 use \Vhnvn\LaravelHelper\Console\AppMakeCommands\ModelMakeCommand;
+use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 class ModuleModelMakeCommand extends ModelMakeCommand {
   use ModuleContextOverride;
@@ -14,7 +16,8 @@ class ModuleModelMakeCommand extends ModelMakeCommand {
   protected $signature = 'mmake:model
     {module           : The module to create the model.}
     {name             : The model name.}
-    {--m|migration  : Create a new migration file for the model.}
+    {--m|migration    : Create a new migration file for the model.}
+    {--force          : Force the migration creation.}
   ';
 
   /**
@@ -24,24 +27,34 @@ class ModuleModelMakeCommand extends ModelMakeCommand {
    */
   protected $description = 'Create a new module\'s Eloquent model class (overrided)';
 
-	/**
-	* Execute the console command.
-  * @return void
-  */
+  /**
+   * Get the default namespace for the class.
+   * @param  string $rootNamespace
+   * @return string
+   */
+  protected function getDefaultNamespace($rootNamespace)
+  {
+    return $rootNamespace . '\\Model';
+  }
+
+  /**
+   * Execute the console command.
+   * @return void
+   */
   public function handle()
   {
-		if (GeneratorCommand::handle() === false && ! $this->option('force')) {
-			return;
-		}
+    if (GeneratorCommand::handle() === false && ! $this->option('force')) {
+        return;
+    }
 
-		if ($this->option('migration')) {
-			$table = Str::plural(Str::snake(class_basename($this->argument('name'))));
+    if ($this->option('migration')) {
+      $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
 
-			$this->call('mmake:migration', [
+      $this->call('mmake:migration', [
         'module' => $this->argument('module'),
         'name' => "create_{$table}_table",
         '--create' => $table
       ]);
-		}
+    }
   }
 }

@@ -8,79 +8,78 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ModelMakeCommand extends GeneratorCommand
 {
-	/**
-	* The console command name.
-	* @var string
-	*/
-	protected $name = 'amake:model';
-	
-	/**
-	* The console command description.
-	* @var string
-	*/
-	protected $description = 'Create a new Eloquent model class (overrided)';
+  /**
+   * The console command name.
+   * @var string
+   */
+  protected $name = 'amake:model';
 
   /**
-	* The type of class being generated.
-  * @var string
-  */
+   * The console command description.
+   * @var string
+   */
+  protected $description = 'Create a new Eloquent model class (overrided)';
+
+  /**
+   * The type of class being generated.
+   * @var string
+   */
   protected $type = 'Model';
-	
-	/**
-	* Execute the console command.
-  * @return void
-  */
+
+  /**
+   * Execute the console command.
+   * @return void
+   */
   public function handle()
   {
-		if (parent::handle() === false && ! $this->option('force')) {
-			return;
-		}
-		
-		if ($this->option('migration')) {
-			$table = Str::plural(Str::snake(class_basename($this->argument('name'))));
-			
-			$this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
-		}
-	}
-	
-	/**
-	* Get the stub file for the generator.
-  * @return string
-  */
+    if (parent::handle() === false && ! $this->option('force')) {
+      return;
+    }
+
+    if ($this->option('migration')) {
+      $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
+      $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
+    }
+  }
+
+  /**
+   * Get the stub file for the generator.
+   * @return string
+   */
   protected function getStub()
   {
-		return __DIR__ . '/stubs/model.stub';
-	}
-	
-	/**
-	* Get the default namespace for the class.
-  * @param  string $rootNamespace
-  * @return string
-  */
+    return __DIR__ . '/stubs/model.stub';
+  }
+
+  /**
+   * Get the default namespace for the class.
+   * @param  string $rootNamespace
+   * @return string
+   */
   protected function getDefaultNamespace($rootNamespace)
   {
-		return $rootNamespace;
-	}
-	
-	/**
-	* Get the console command options.
-  * @return array
-  */
+    return $rootNamespace;
+  }
+
+  /**
+   * Get the console command options.
+   * @return array
+   */
   protected function getOptions()
   {
-		return [
-        ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
+    return [
+      ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
     ];
-	}
-	
-	/**
-	* Get the desired class name from the input.
-  * @return string
-  */
+  }
+
+  /**
+   * Get the desired class name from the input.
+   * @return string
+   */
   protected function getNameInput()
   {
-		return trim($this->argument('name'));
-	}
+    return trim($this->argument('name'));
+  }
 
   /**
    * Replace the namespace for the given stub.
