@@ -54,7 +54,7 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
       $logic = str_replace("/", "", $logic);
       $logic = str_replace("\\", "", $logic);
 
-      $imports[] = 'use '.$this->rootModuleNamespace().'\\Logic\\'.$logic;
+      $imports[] = 'use '.$this->rootModuleNamespace().'\\Logic\\'.$logic.';';
       $code[] = '$this->app->singleton('.$logic.'::class);';
     }
 
