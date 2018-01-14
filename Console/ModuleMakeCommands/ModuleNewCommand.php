@@ -5,7 +5,7 @@ namespace Vhnvn\LaravelHelper\Console\ModuleMakeCommands;
 use \Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class ModuleModelMakeCommand extends Command {
+class ModuleNewCommand extends Command {
   /**
 	 * The console command signature.
    *

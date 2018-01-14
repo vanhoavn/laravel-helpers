@@ -4,7 +4,7 @@ namespace Vhnvn\LaravelHelper\Console\ModuleMakeCommands;
 
 use Illuminate\Console\GeneratorCommand;
 
-class ModuleLogicMakeCommand extends GeneratorCommand {
+class ModuleFacadeMakeCommand extends GeneratorCommand {
   use ModuleContextOverride;
 
   /**

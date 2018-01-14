@@ -38,6 +38,10 @@ class ModulesServiceProvider extends ServiceProvider {
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleModelMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleProviderMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleMigrateMakeCommand::class,
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleLogicMakeCommand::class,
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleFacadeMakeCommand::class,
+
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleNewCommand::class,
 
       \Vhnvn\LaravelHelper\Console\AppMakeCommands\ModelMakeCommand::class,
 
