@@ -97,7 +97,7 @@ class ModuleNewCommand extends Command {
   protected function createRepositoryStructure($base_path, $module, $name) {
     $this->createGenericStructure($base_path, 'Repository', $module, $name);
     $this->createGenericStructure($base_path, 'Repository/Contracts', $module, $name);
-    $this->createGenericStructure($base_path, 'Repository/Default', $module, $name);
+    $this->createGenericStructure($base_path, 'Repository/DefaultImplement', $module, $name);
   }
 
   protected function mkdir($dir) {
