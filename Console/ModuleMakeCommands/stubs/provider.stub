@@ -27,12 +27,16 @@ class DummyClass extends ServiceProvider
         // $configPath = __DIR__ . '/config/dummyname.php';
         // $this->mergeConfigFrom($configPath, 'dummyname');
 
-        $this->loadMigrationsFrom(__DIR__.'/databases/migrations');
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/databases/migrations');
+        }
 
         DummyCode
 
-        // $this->commands([
-        // ]);
+        // if ($this->app->runningInConsole()) {
+        //     $this->commands([
+        //     ]);
+        // }
 
         // BEGIN - REPOSITORIES REGISTRY
         // END - REPOSITORIES REGISTRY
