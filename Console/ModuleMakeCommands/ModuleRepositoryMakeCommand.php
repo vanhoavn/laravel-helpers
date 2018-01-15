@@ -101,7 +101,7 @@ class ModuleRepositoryMakeCommand extends Command
         $repository_base = substr($this->getPath('Repository'), 0, -4);
         $repository_ns = $this->rootModuleNamespace() . '\\Repository';
 
-        if($this->files->exists($repository_base . '/Default') && $this->files->isDirectory($repository_base . '/Default')) {
+        if($this->files->exists($repository_base . '/DefaultImplement') && $this->files->isDirectory($repository_base . '/DefaultImplement')) {
             $repository_base .= '/DefaultImplement';
             $repository_ns .= '\\DefaultImplement';
         }
