@@ -80,7 +80,7 @@ class ModuleRepositoryMakeCommand extends Command
             $contract_base .= '/' . str_replace('\\','/',$ns);
         }
 
-        $interface_name = "{$name}Interface";
+        $interface_name = "{$name}RepositoryInterface";
 
         $this->generateStubFile(
             $contract_base . "/" . $interface_name . ".php",
