@@ -13,6 +13,7 @@ class ModuleNewCommand extends Command {
    */
   protected $signature = 'mmake
     {module : The module to create/update.}
+    {--ns=  : The namespace to create/update.}
   ';
 
   /**
@@ -37,6 +38,19 @@ class ModuleNewCommand extends Command {
     'Repository',
   ];
 
+  private function configKeyRoot() {
+    $config_key = "modules";
+    if ($this->input->hasOption('ns')) {
+      $ns = $this->input->getOption('ns');
+      if(array_key_exists($ns, config('modules.sub_namespace'))) {
+        $config_key = "modules.sub_namespace.$ns";
+      } else {
+        throw new \Exception("Cant find sub_namespace $ns");
+      }
+    }
+    return $config_key;
+  }
+
   /**
    * Execute the console command.
    *
@@ -45,7 +59,7 @@ class ModuleNewCommand extends Command {
   public function handle()
   {
     $module = str_replace('\\', '/', $this->input->getArgument('module'));
-    $base_path = $this->laravel->basePath() . '/' . config('modules.path') . '/' . str_replace("\\", "/", $module);
+    $base_path = $this->laravel->basePath() . '/' . config("{$this->configKeyRoot()}.path") . '/' . str_replace("\\", "/", $module);
 
     $name = str_replace("/", "", $module);
 
@@ -69,11 +83,11 @@ class ModuleNewCommand extends Command {
     }
 
     $this->info("  .. create module provider");
-    $this->call('mmake:provider', [
+    $this->call('mmake:provider', $this->wrapNS([
       'module' => $module,
       'name' => "{$name}ModuleProvider",
       '--registerLogic' => "{$name}Logic",
-    ]);
+    ]));
   }
 
   protected function createGenericStructure($base_path, $structure, $module, $name) {
@@ -84,15 +98,15 @@ class ModuleNewCommand extends Command {
 
   protected function createLogicStructure($base_path, $module, $name) {
     $this->createGenericStructure($base_path, 'Logic', $module, $name);
-    $this->call('mmake:logic', [
+    $this->call('mmake:logic', $this->wrapNS([
       'module' => $module,
       'name' => "{$name}Logic",
-    ]);
-    $this->call('mmake:facade', [
+    ]));
+    $this->call('mmake:facade', $this->wrapNS([
       'module' => $module,
       'name' => "{$name}Module",
       'target' => 'Logic\\' . $name . 'Logic',
-    ]);
+    ]));
   }
 
   protected function createRepositoryStructure($base_path, $module, $name) {
@@ -124,6 +138,20 @@ class ModuleNewCommand extends Command {
     }
   }
 
+  private function wrapNS($option) {
+    if ($this->input->hasOption('ns')) {
+      $ns = $this->input->getOption('ns');
+      if(array_key_exists($ns, config('modules.sub_namespace'))) {
+        return [
+          "--ns" => $ns,
+        ] + $option;
+      } else {
+        throw new \Exception("Cant find sub_namespace $ns");
+      }
+    }
+    return $option;
+  }
+
   /**
    * Get the root namespace for the class.
    *
@@ -131,6 +159,6 @@ class ModuleNewCommand extends Command {
    */
   protected function rootNamespace()
   {
-    return config('modules.namespace', $this->laravel->getNamespace());
+    return config("{$this->configKeyRoot()}.namespace", $this->laravel->getNamespace());
   }
 }
