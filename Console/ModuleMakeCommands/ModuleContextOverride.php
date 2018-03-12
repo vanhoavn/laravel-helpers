@@ -57,14 +57,14 @@ trait ModuleContextOverride {
 
     if ($this->input->hasArgument('module')) {
       $module_path = str_replace('\\', '/', $this->input->getArgument('module'));
-      return $this->laravel->basePath() . '/' . config('{$this->configKeyRoot()}.path') . '/' . $module_path . '/' . str_replace('\\', '/', $name) . '.php';
+      return $this->laravel->basePath() . '/' . config("{$this->configKeyRoot()}.path") . '/' . $module_path . '/' . str_replace('\\', '/', $name) . '.php';
     } else {
-      return $this->laravel->basePath() . '/' . config('{$this->configKeyRoot()}.path') . '/' . str_replace('\\', '/', $name) . '.php';
+      return $this->laravel->basePath() . '/' . config("{$this->configKeyRoot()}.path") . '/' . str_replace('\\', '/', $name) . '.php';
     }
   }
 
   protected function configureUsingFluentDefinition() {
     parent::configureUsingFluentDefinition();
-    $this->getDefinition()->addOption(new InputOption("ns", "ns", InputOption::VALUE_NONE, "module root name"));
+    $this->getDefinition()->addOption(new InputOption("ns", "s", InputOption::VALUE_OPTIONAL, "module root name"));
   }
 }

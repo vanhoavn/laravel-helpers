@@ -143,7 +143,7 @@ class ModuleNewCommand extends Command {
       $ns = $this->input->getOption('ns');
       if(array_key_exists($ns, config('modules.sub_namespace'))) {
         return [
-          "--ns" => $ns,
+          "-ns" => $ns,
         ] + $option;
       } else {
         throw new \Exception("Cant find sub_namespace $ns");
