@@ -8,4 +8,12 @@ return [
 
   // the base model class
   'base_model' => 'Illuminate\Database\Eloquent\Model',
+
+  //
+  'sub_namespace' => [
+    'default' => [
+      'namespace' => 'Modules',
+      'path' => 'modules',
+    ],
+  ],
 ];

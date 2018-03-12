@@ -3,6 +3,7 @@
 namespace Vhnvn\LaravelHelper\Console\ModuleMakeCommands;
 
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputOption;
 
 trait ModuleContextOverride {
   /**
@@ -28,7 +29,20 @@ trait ModuleContextOverride {
   {
     $module_ns = str_replace('/', '\\', $this->input->getArgument('module'));
 
-    return config('modules.namespace', $this->laravel->getNamespace()) . '\\' . $module_ns;
+    return config("{$this->configKeyRoot()}.namespace", $this->laravel->getNamespace()) . '\\' . $module_ns;
+  }
+
+  private function configKeyRoot() {
+    $config_key = "modules";
+    if ($this->input->hasOption('ns')) {
+      $ns = $this->input->getOption('ns');
+      if(array_key_exists($ns, config('modules.sub_namespace'))) {
+        $config_key = "modules.sub_namespace.$ns";
+      } else {
+        throw new \Exception("Cant find sub_namespace $ns");
+      }
+    }
+    return $config_key;
   }
 
   /**
@@ -43,9 +57,14 @@ trait ModuleContextOverride {
 
     if ($this->input->hasArgument('module')) {
       $module_path = str_replace('\\', '/', $this->input->getArgument('module'));
-      return $this->laravel->basePath() . '/' . config('modules.path') . '/' . $module_path . '/' . str_replace('\\', '/', $name) . '.php';
+      return $this->laravel->basePath() . '/' . config('{$this->configKeyRoot()}.path') . '/' . $module_path . '/' . str_replace('\\', '/', $name) . '.php';
     } else {
-      return $this->laravel->basePath() . '/' . config('modules.path') . '/' . str_replace('\\', '/', $name) . '.php';
+      return $this->laravel->basePath() . '/' . config('{$this->configKeyRoot()}.path') . '/' . str_replace('\\', '/', $name) . '.php';
     }
+  }
+
+  protected function configureUsingFluentDefinition() {
+    parent::configureUsingFluentDefinition();
+    $this->getDefinition()->addOption(new InputOption("ns", "ns", InputOption::VALUE_NONE, "module root name"));
   }
 }
