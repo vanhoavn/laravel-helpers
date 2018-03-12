@@ -33,6 +33,7 @@ class ModulesServiceProvider extends ServiceProvider {
     $this->mergeConfigFrom($configPath, 'modules');
 
     $this->commands([
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleConsoleMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleEventMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleListenerMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleModelMakeCommand::class,
