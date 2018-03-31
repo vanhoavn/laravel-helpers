@@ -14,7 +14,14 @@ class DummyClass extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // $this->loadTranslationsFrom(__DIR__.'/resources/translations', 'dummyname');
+        // $this->loadViewsFrom(__DIR__.'/resources/views', 'dummyname');
+        // $this->loadRoutesFrom(__DIR__.'/routes.php', 'dummyname');
+
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/databases/migrations');
+        }
+
     }
 
     /**
@@ -26,10 +33,6 @@ class DummyClass extends ServiceProvider
     {
         // $configPath = __DIR__ . '/config/dummyname.php';
         // $this->mergeConfigFrom($configPath, 'dummyname');
-
-        if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/databases/migrations');
-        }
 
         DummyCode
 
