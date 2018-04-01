@@ -16,7 +16,7 @@ class DummyClass extends ServiceProvider
     {
         // $this->loadTranslationsFrom(__DIR__.'/resources/translations', 'dummyname');
         // $this->loadViewsFrom(__DIR__.'/resources/views', 'dummyname');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php', 'dummyname');
+        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/databases/migrations');
