@@ -35,7 +35,7 @@ class ModuleNewCommand extends Command
         'Exception',
         'Facades',
         'Logic',
-        'Model',
+        'Models',
         'databases',
         'resources',
         'Repository',
