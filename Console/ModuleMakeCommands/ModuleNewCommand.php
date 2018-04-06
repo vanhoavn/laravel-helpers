@@ -167,7 +167,7 @@ class ModuleNewCommand extends Command
     private function wrapNS($option)
     {
         if ($this->input->hasOption('ns')) {
-            $ns = $this->input->getOption('ns');
+            $ns = $this->input->getOption('ns') ?? 'default';
             if (array_key_exists($ns, config('modules.sub_namespace'))) {
                 return [
                         "--ns" => $ns,

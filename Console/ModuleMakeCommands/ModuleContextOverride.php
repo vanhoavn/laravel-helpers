@@ -35,7 +35,7 @@ trait ModuleContextOverride {
   private function configKeyRoot() {
     $config_key = "modules";
     if ($this->input->hasOption('ns')) {
-      $ns = $this->input->getOption('ns');
+      $ns = $this->input->getOption('ns') ?? 'default';
       if(array_key_exists($ns, config('modules.sub_namespace'))) {
         $config_key = "modules.sub_namespace.$ns";
       } else {
