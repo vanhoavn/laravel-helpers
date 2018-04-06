@@ -34,7 +34,7 @@ class ModuleModelMakeCommand extends ModelMakeCommand {
    */
   protected function getDefaultNamespace($rootNamespace)
   {
-    return $rootNamespace . '\\Model';
+    return $rootNamespace . '\\Models';
   }
 
   /**
