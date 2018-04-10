@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 
-class ModuleRequestMakeCommand extends Illuminate\Foundation\Console\RequestMakeCommand
+class ModuleRequestMakeCommand extends \Illuminate\Foundation\Console\RequestMakeCommand
 {
     use ModuleContextOverride;
 
