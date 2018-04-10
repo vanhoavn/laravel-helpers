@@ -9,7 +9,8 @@ return [
     // the base model class
     'base_model' => 'Illuminate\Database\Eloquent\Model',
 
-    'stubs'         => [],
+    'stubs'         => [
+    ],
 
     //
     'sub_namespace' => [
