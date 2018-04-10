@@ -27,9 +27,9 @@ class ModuleMigrateMakeCommand extends \Illuminate\Database\Console\Migrations\M
     protected function getMigrationPath()
     {
         if (!is_null($targetPath = $this->input->getOption('path'))) {
-            return $this->getPath($targetPath);
+            return $this->getPath($targetPath, '');
         }
 
-        return $this->getPath('databases/migrations');
+        return $this->getPath('databases/migrations', '');
     }
 }
