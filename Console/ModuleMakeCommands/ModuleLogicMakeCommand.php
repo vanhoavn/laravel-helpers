@@ -46,7 +46,7 @@ class ModuleLogicMakeCommand extends GeneratorCommand {
    *
    * @return string
    */
-  protected function getStub()
+  protected function getLocalStub()
   {
       return __DIR__.'/stubs/logic.stub';
   }

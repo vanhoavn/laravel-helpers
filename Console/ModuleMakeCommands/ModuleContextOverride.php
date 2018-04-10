@@ -73,4 +73,26 @@ trait ModuleContextOverride
         parent::configureUsingFluentDefinition();
         $this->getDefinition()->addOption(new InputOption("ns", "s", InputOption::VALUE_OPTIONAL, "module root name"));
     }
+
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
+        $stub     = method_exists($this, 'getLocalStub') ? $this->getLocalStub() : parent::getStub();
+        $filename = basename($stub);
+        $folder   = basename(dirname($stub));
+
+        if ($folder === 'stubs') {
+            if ($stubs = config("modules.stubs")) {
+                if (array_key_exists($filename, $stubs)) {
+                    return $stubs[$filename];
+                }
+            }
+        }
+
+        return $stub;
+    }
 }

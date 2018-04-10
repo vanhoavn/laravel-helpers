@@ -30,7 +30,7 @@ class ModuleProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderM
    *
    * @return string
    */
-  protected function getStub()
+  protected function getLocalStub()
   {
       return __DIR__.'/stubs/provider.stub';
   }

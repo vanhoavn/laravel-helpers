@@ -46,7 +46,7 @@ class ModuleConsoleMakeCommand extends GeneratorCommand {
    *
    * @return string
    */
-  protected function getStub()
+  protected function getLocalStub()
   {
       return __DIR__.'/stubs/console.stub';
   }
