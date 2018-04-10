@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 
-class ModuleControllerMakeCommand extends \Illuminate\Foundation\Console\ControllerMakeCommand
+class ModuleControllerMakeCommand extends \Illuminate\Routing\Console\ControllerMakeCommand
 {
     use ModuleContextOverride;
 
