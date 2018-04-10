@@ -34,6 +34,7 @@ class ModulesServiceProvider extends ServiceProvider {
 
     $this->commands([
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleConsoleMakeCommand::class,
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleControllerMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleEventMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleListenerMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleModelMakeCommand::class,
@@ -42,6 +43,7 @@ class ModulesServiceProvider extends ServiceProvider {
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleLogicMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleFacadeMakeCommand::class,
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleRepositoryMakeCommand::class,
+      \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleRequestMakeCommand::class,
 
       \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleNewCommand::class,
 
