@@ -18,7 +18,12 @@ class ModuleControllerMakeCommand extends \Illuminate\Routing\Console\Controller
     protected $signature = 'mmake:controller
     {module           : The module to create the controller.}
     {name             : The controller name.}
+    {--m|model          : Generate a resource controller for the given model.}
+    {--r|resource          : Generate a resource controller class.}
+    {--p|parent          : Generate a nested resource controller class.}
+    {--api          : Exclude the create and edit methods from the controller.}
   ';
+
 
     /**
      * The console command description.
