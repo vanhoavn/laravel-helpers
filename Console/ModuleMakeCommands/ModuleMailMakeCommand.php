@@ -14,7 +14,7 @@ class ModuleMailMakeCommand extends \Illuminate\Foundation\Console\MailMakeComma
     {module           : The module to create the event.}
     {name             : The event name.}
     {--f|force        : Create the class even if the mailable already exists.}
-    {--m|markdown     : Create a new Markdown template for the mailable.}
+    {--m|markdown=    : Create a new Markdown template for the mailable.}
   ';
 
     /**
