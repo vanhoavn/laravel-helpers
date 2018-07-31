@@ -140,7 +140,7 @@ class ModuleNewCommand extends Command
     protected function createresourcesStructure($base_path, $module, $name)
     {
         $this->createGenericStructure($base_path, 'resources', $module, $name);
-        $this->createGenericStructure($base_path, 'resources/translations', $module, $name);
+        $this->createGenericStructure($base_path, 'resources/lang', $module, $name);
         $this->createGenericStructure($base_path, 'resources/views', $module, $name);
     }
 

@@ -14,7 +14,7 @@ class DummyClass extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/resources/translations', 'dummyname');
+        // $this->loadTranslationsFrom(__DIR__.'/resources/translations', '');
         // $this->loadViewsFrom(__DIR__.'/resources/views', 'dummyname');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
