@@ -20,7 +20,7 @@ class ModuleControllerMakeCommand extends \Illuminate\Routing\Console\Controller
     {name              : The controller name.}
     {--m|model         : Generate a resource controller for the given model.}
     {--r|resource      : Generate a resource controller class.}
-    {--p|invokable     : Generate a single method, invokable controller class.}
+    {--i|invokable     : Generate a single method, invokable controller class.}
     {--p|parent        : Generate a nested resource controller class.}
     {--api             : Exclude the create and edit methods from the controller.}
   ';
