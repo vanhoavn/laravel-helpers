@@ -95,4 +95,19 @@ trait ModuleContextOverride
 
         return $stub;
     }
+
+    private function wrapNS($option)
+    {
+        if ($this->input->hasOption('ns')) {
+            $ns = $this->input->getOption('ns') ?? 'default';
+            if (array_key_exists($ns, config('modules.sub_namespace'))) {
+                return [
+                        "--ns" => $ns,
+                    ] + $option;
+            } else {
+                throw new \Exception("Cant find sub_namespace $ns");
+            }
+        }
+        return $option;
+    }
 }

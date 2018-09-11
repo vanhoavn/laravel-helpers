@@ -50,11 +50,13 @@ class ModuleModelMakeCommand extends ModelMakeCommand {
     if ($this->option('migration')) {
       $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
 
-      $this->call('mmake:migration', [
+      if(starts_with($table, "model_")) $table = substr($table, 6);
+
+      $this->call('mmake:migration', $this->wrapNS([
         'module' => $this->argument('module'),
         'name' => "create_{$table}_table",
         '--create' => $table
-      ]);
+      ]));
     }
   }
 }
