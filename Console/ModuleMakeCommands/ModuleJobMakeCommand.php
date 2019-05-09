@@ -5,7 +5,7 @@ namespace Vhnvn\LaravelHelper\Console\ModuleMakeCommands;
 use Illuminate\Console\GeneratorCommand;
 use Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleContextOverride;
 
-class ModuleJobMakeCommand extends GeneratorCommand
+class ModuleJobMakeCommand extends \Illuminate\Foundation\Console\JobMakeCommand
 {
     use ModuleContextOverride;
     /**
