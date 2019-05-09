@@ -16,7 +16,6 @@ class ModuleJobMakeCommand extends GeneratorCommand
     protected $signature = 'mmake:job
     {module : The module to create the facade.}
     {name   : The job name.}
-    {target : The target class.}
   ';
     /**
      * The console command description.
