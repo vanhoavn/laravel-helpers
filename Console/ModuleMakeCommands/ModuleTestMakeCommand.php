@@ -10,7 +10,7 @@ class ModuleTestMakeCommand extends \Illuminate\Foundation\Console\TestMakeComma
    *
    * @var string
    */
-  protected $signature = 'mmake:listener
+  protected $signature = 'mmake:test
     {module           : The module to create the listener.}
     {name             : The name of the class.}
     {--unit : Create a unit test}
