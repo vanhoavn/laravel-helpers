@@ -48,6 +48,7 @@ class ModulesServiceProvider extends ServiceProvider
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleRequestMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleNotificationMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleJobMakeCommand::class,
+            \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleTestMakeCommand::class,
 
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleNewCommand::class,
 

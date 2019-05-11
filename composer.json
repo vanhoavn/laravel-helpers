@@ -13,7 +13,8 @@
         "email": "vanhoa@vhn.vn"
     }],
     "require": {
-        "php": "^7.0.0"
+        "php": "^7.0.0",
+        "vanhoavn/laravel-helper": "dev-master#2dbe506dd60808ae8a4ebe50b4d9267d4d5d9b0e"
     },
     "autoload": {
         "psr-4": {
