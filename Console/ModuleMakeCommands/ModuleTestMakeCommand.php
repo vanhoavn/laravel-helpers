@@ -32,6 +32,10 @@ class ModuleTestMakeCommand extends \Illuminate\Foundation\Console\TestMakeComma
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\\Test';
+        if ($this->option('unit')) {
+            return $rootNamespace.'\\Test\\Unit';
+        } else {
+            return $rootNamespace.'\\Test\\Feature';
+        }
     }
 }
