@@ -7,12 +7,21 @@
         "issues": "https://github.com/vanhoavn/laravel-helpers/issues",
         "source": "https://github.com/vanhoavn/laravel-helpers"
     },
-    "keywords": ["laravel", "helper"],
-    "authors": [{
-        "name": "vanhoa",
-        "email": "vanhoa@vhn.vn"
-    }],
+    "keywords": [
+        "laravel",
+        "helper"
+    ],
+    "authors": [
+        {
+            "name": "vanhoa",
+            "email": "vanhoa@vhn.vn"
+        }
+    ],
     "require": {
+        "illuminate/support": "^5.8",
+        "illuminate/container": "^5.8",
+        "illuminate/database": "^5.8",
+        "illuminate/events": "^5.8",
         "php": "^7.0.0"
     },
     "autoload": {
