@@ -33,6 +33,12 @@ class ModulesServiceProvider extends ServiceProvider
         $configPath = __DIR__ . '/config/modules.php';
         $this->mergeConfigFrom($configPath, 'modules');
 
+        $this->app->singleton('command.module.migrate.make', function ($app) {
+            $creator = $app['migration.creator'];
+            $composer = $app['composer'];
+            return new \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleMigrateMakeCommand($creator, $composer);
+        });
+
         $this->commands([
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleConsoleMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleControllerMakeCommand::class,
@@ -40,7 +46,6 @@ class ModulesServiceProvider extends ServiceProvider
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleListenerMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleModelMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleProviderMakeCommand::class,
-            \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleMigrateMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleMailMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleLogicMakeCommand::class,
             \Vhnvn\LaravelHelper\Console\ModuleMakeCommands\ModuleFacadeMakeCommand::class,
@@ -55,6 +60,8 @@ class ModulesServiceProvider extends ServiceProvider
             \Vhnvn\LaravelHelper\Console\AppMakeCommands\ModelMakeCommand::class,
 
             \Vhnvn\LaravelHelper\Console\DataModelCommands\DataModelCodeGenerator::class,
+
+            'command.module.migrate.make',
         ]);
     }
 }
